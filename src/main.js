@@ -13,7 +13,8 @@ import {
   MdMenu,
   MdList,
   MdRipple,
-  MdContent
+  MdContent,
+  MdProgress
 } from "vue-material/dist/components";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
@@ -32,6 +33,7 @@ Vue.use(MdList);
 Vue.use(MdAutocomplete);
 Vue.use(MdRipple);
 Vue.use(MdContent);
+Vue.use(MdProgress);
 Vue.config.productionTip = false;
 
 new Vue({

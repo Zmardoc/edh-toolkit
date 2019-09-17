@@ -5,17 +5,28 @@
         v-model="$store.state.decks"
         v-if="$store.state.decks != null && $store.state.decks.length > 0"
         class="fullWidth"
+        @md-selected="goToDeck"
       >
         <md-table-toolbar>
           <h1 class="md-title">Moje decky</h1>
         </md-table-toolbar>
 
-        <md-table-row slot="md-table-row" slot-scope="{ item }">
+        <md-table-row
+          slot="md-table-row"
+          slot-scope="{ item }"
+          md-selectable="single"
+        >
           <md-table-cell md-label="Název">{{ item.name }}</md-table-cell>
           <md-table-cell md-label="Generál">{{
             item.general.name
           }}</md-table-cell>
-          <md-table-cell md-label="Barvy">Barvy TODO</md-table-cell>
+          <md-table-cell md-label="Barvy">
+            <S
+              :t="item"
+              v-for="item in item.general.color_identity"
+              :key="item"
+            />
+          </md-table-cell>
           <md-table-cell md-label="Počet karet"
             >{{ item.gender }}/99</md-table-cell
           >
@@ -28,12 +39,18 @@
   </div>
 </template>
 <script>
+import S from "../components/symbol";
 export default {
   name: "Decks",
   components: {
-    DeckCreator: () => import("../components/deck-creator")
+    DeckCreator: () => import("../components/deck-creator"),
+    S
   },
-  data: () => ({})
+  methods: {
+    goToDeck(deck) {
+      this.$router.push(`decks/${deck.id}`);
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

@@ -4,7 +4,7 @@
 <script>
 export default {
   name: "Detail",
-  components: []
+  components: {}
 };
 </script>
 <style lang="scss" scoped></style>

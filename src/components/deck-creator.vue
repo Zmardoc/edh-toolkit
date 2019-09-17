@@ -8,17 +8,15 @@
             <label>Název</label>
             <md-input v-model="name" autofocus></md-input>
           </md-field>
-          <md-autocomplete
-            v-model="generalName"
-            :md-options="availableGenerals"
-            @md-changed="getGenerals"
-            @md-opened="getGenerals"
-            md-dense
-          >
+          <md-field>
             <label>Generál</label>
-          </md-autocomplete>
+            <md-input v-model="generalName" @input="validateGeneral"></md-input>
+          </md-field>
         </div>
-        <Card class="column" :url="imageUrl" />
+        <Card
+          class="column"
+          :url="general ? general.image_uris.normal : null"
+        />
       </md-dialog-content>
       <md-dialog-actions>
         <md-button class="md-primary" @click="showDialog = false"
@@ -27,7 +25,7 @@
         <md-button
           class="md-primary"
           @click="createDeck"
-          :disabled="general == null || name === ''"
+          :disabled="general == null || name === '' || loading"
           >Vytvořit</md-button
         >
       </md-dialog-actions>
@@ -38,7 +36,6 @@
   </div>
 </template>
 <script>
-import mtgBack from "../assets/back.jpg";
 import { uuid } from "vue-uuid";
 import Card from "../components/card";
 export default {
@@ -51,50 +48,48 @@ export default {
     name: "",
     generalName: "",
     general: null,
-    imageUrl: mtgBack,
-    availableGenerals: []
+    err: false,
+    loading: true
   }),
-  watch: {
-    generalName: function(val) {
+
+  methods: {
+    show() {
+      this.name = "";
+      this.generalName = "";
+      this.showDialog = true;
+    },
+    createDeck() {
+      var deck = {
+        name: this.name,
+        general: this.general,
+        id: uuid.v1(),
+        cards: []
+      };
+
+      this.$store.commit("addDeck", deck);
+      this.showDialog = false;
+    },
+    validateGeneral() {
+      if (this.generalName === "") {
+        return false;
+      }
+      this.loading = true;
       this.axios
-        .get(`/cards/search?q=!"${val}"`)
+        .get(
+          `/cards/search?q=!"${this.generalName}" legal:commander ((o:can o:be o:your o:commander t:planeswalker) or (t:legendary t:creature))"`
+        )
         .then(res => {
           if (res.data.data.length > 0) {
             this.general = res.data.data[0];
-            this.imageUrl = this.general.image_uris.normal;
+            this.loading = false;
+            return true;
           }
         })
         .catch(() => {
           this.general = null;
-          this.imageUrl = mtgBack;
+          this.loading = false;
+          return false;
         });
-    }
-  },
-  methods: {
-    show() {
-      this.name = "";
-      this.generaleName = "";
-      this.showDialog = true;
-    },
-    createDeck() {
-      //TODO
-      var deck = {
-        name: this.name,
-        general: this.general,
-        id: uuid.v1()
-      };
-      this.$store.commit("addDeck", deck);
-      this.showDialog = false;
-    },
-    getGenerals() {
-      var params = `${
-        this.generalName ? this.generalName : ""
-      } legal:commander ((o:can o:be o:your o:commander t:planeswalker) or (t:legendary t:creature))`;
-      this.axios.get(`/cards/search?&q=${params}`).then(res => {
-        this.availableGenerals = res.data.data.slice(0, 15).map(function(item) {
-          return item["name"];
-        });
-      });
     }
   }
 };

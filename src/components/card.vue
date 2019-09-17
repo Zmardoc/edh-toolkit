@@ -7,7 +7,13 @@
 import mtgBack from "../assets/back.jpg";
 export default {
   name: "Card",
-  props: ["url"],
+  components: {},
+  props: {
+    url: {
+      type: String,
+      default: null
+    }
+  },
   data: () => ({
     imageUrl: mtgBack
   }),
@@ -20,6 +26,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .img {
-  width: 200px;
+  width: 280px;
+}
+.inPicture {
+  margin-top: -30px;
+  color: white;
 }
 </style>
