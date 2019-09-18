@@ -14,7 +14,7 @@ export default new Vuex.Store({
     },
     removeDeck(state, id) {
       state.decks = state.decks.filter(function(obj) {
-        return obj.id === id;
+        return obj.id !== id;
       });
     }
   },

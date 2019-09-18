@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <DetailDeckHeader :deck="currentDeck" />
   </div>
 </template>
@@ -20,4 +20,8 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container {
+  padding: 20px;
+}
+</style>

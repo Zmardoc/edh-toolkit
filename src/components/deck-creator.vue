@@ -13,10 +13,7 @@
             <md-input v-model="generalName" @input="validateGeneral"></md-input>
           </md-field>
         </div>
-        <Card
-          class="column"
-          :url="general ? general.image_uris.normal : null"
-        />
+        <Card class="column" :card="general" />
       </md-dialog-content>
       <md-dialog-actions>
         <md-button class="md-primary" @click="showDialog = false"
