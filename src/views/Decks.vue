@@ -8,7 +8,7 @@
         @md-selected="goToDeck"
       >
         <md-table-toolbar>
-          <h1 class="md-title">Moje decky</h1>
+          <h1 class="md-title">Moje dicky</h1>
         </md-table-toolbar>
 
         <md-table-row
