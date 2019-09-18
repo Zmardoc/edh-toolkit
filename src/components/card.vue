@@ -11,7 +11,7 @@ export default {
   props: {
     url: {
       type: String,
-      default: null
+      default: mtgBack
     }
   },
   data: () => ({
@@ -27,6 +27,7 @@ export default {
 <style lang="scss" scoped>
 .img {
   width: 280px;
+  border-radius: 14px;
 }
 .inPicture {
   margin-top: -30px;

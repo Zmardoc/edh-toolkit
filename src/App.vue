@@ -10,7 +10,7 @@
 @include md-register-theme(
   "default",
   (
-    primary: md-get-palette-color(blue, A200),
+    primary: md-get-palette-color(green, 400),
     // The primary color of your application
       accent: md-get-palette-color(red, A200),
     // The accent or secondary color
@@ -27,6 +27,10 @@ body {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height:100%;
+}
+body {
+  height: 100%;
 }
 .md-menu-content {
   z-index: 11 !important;

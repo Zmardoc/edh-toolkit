@@ -14,10 +14,13 @@ import {
   MdList,
   MdRipple,
   MdContent,
-  MdProgress
+  MdProgress,
+  MdApp,
+  MdDrawer,
+  MdIcon
 } from "vue-material/dist/components";
 import "vue-material/dist/vue-material.min.css";
-import "vue-material/dist/theme/default.css";
+//import "vue-material/dist/theme/default.css";
 
 const thisAxios = axios.create({
   baseURL: "https://api.scryfall.com"
@@ -34,6 +37,9 @@ Vue.use(MdAutocomplete);
 Vue.use(MdRipple);
 Vue.use(MdContent);
 Vue.use(MdProgress);
+Vue.use(MdApp);
+Vue.use(MdDrawer);
+Vue.use(MdIcon);
 Vue.config.productionTip = false;
 
 new Vue({
