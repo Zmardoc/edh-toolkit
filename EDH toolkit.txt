@@ -1,0 +1,83 @@
+
+
+==========MTG EDH project funcionality==========
+
+
+- app layout:
+	* v headeru bude název zvolené routy -> Administrace decků / Editor
+	* defaultní stránka bude [deck-administration]
+	* store udělat tak, aby i po refreši informace zůstaly, jakoby do cookies se ukládaly
+
+		
+- správa decků[deck-administration]:
+	* /decks
+	* tabulka s deckama:
+		+ Název decku
+		+ Generál
+		+ Barvy
+		+ počet karet v decku
+		+ kompletnost decku (veselý/smutný smajlík)
+	* najetí na řádek zobrazí generála
+	* kliknutím na řádek se přejde [deck-viewer] => /decks/g465dg654g65dg4d6f5g4df4g6
+	* bude obsahovat [deck-creator] pod tabulkou
+	
+- detail decku [deck-viewer]:
+	* zpět v routu na /decks
+	* název decku
+	* zobrazený generál
+	* počet karet v decku
+	* kompletnost decku (veselý/smutný smajlík)
+	* smazat deck - po smazání přejít zpět na přehled decků
+	* zobrazení s přepínačem:
+		+ [card-list]vložených karet podle typu jako na tapped out, najedu na kartu a zobrazí se
+		+ [cards]
+		+ [builder]
+	
+- editor decku [builder]:
+	* layout:
+		+ [card-filter]
+		+ pod ním [cards]
+		+ vedle obou [card-list]
+
+- seznam karet [card-list]:
+	* podle typu jako na tapped out, najedu na kartu a zobrazí se [card]
+	* tříděné podle typu (nebo cmc?)
+	* po najetí zobrazit [card]
+
+- karta [card]:
+	* střední obrázek karty
+	* před kartu poloprůhledný div, ve kterém bude:
+		+ cena
+		+ pokud to půjde, % vhodnoti do balíčku se zvoleným generálem...nějak sosnout z edhrec ale nevim jak zatím
+		+ 
+	* před kartu [add-remove-card]
+	
+- vytvářeč decků [deck-creator]:
+	* tlačítko, které vyvolá dialog
+	* Vytvořit deck (složka do které se bude dávat, rovnou frcnout generála)
+		+ při vytvýáření vyhledávat mezi legendárními bytostmi a planeswalkery, ketrýmají napsaný že můžou být commander
+
+
+- filter podle zvoleného decku [card-filter]:
+	* pokud není zvolen deck, není vidět ani vyhledávání
+	* CMC
+	* automaticky legal pro EDH
+	* typ
+	* název
+	* rules fulltext (s přidáváním symbolů)
+	* cena do (doporučená maximální pro martina) v korunách
+	* barvy generála
+	* automaticky nezařazovat karty, které již jsou v decku
+	
+- opráski [cards]:
+	* všechny karty
+	
+- vložit/vyhodit kartu [add-remove-card]:
+	* tlačítko +/-
+	* kliknutí vloží/vyhodí kartu z decku
+	* zobrazení + pouze pokud selectovaný deck má 0 n těchto karet, mimo non basicy
+	* zobrazení - pouze pokud deck obsahuje alespoň 1 tuto kartu
+	* pro + kontrola počtu karet v decku (99)
+	
+
+

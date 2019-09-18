@@ -1,7 +1,7 @@
 <template>
   <md-app class="fullHeight">
     <md-app-drawer md-permanent="full" class="centerContent">
-      <QuickDeckViewer :deck="hoveredItem "/>
+      <QuickDeckViewer :deck="hoveredItem" />
     </md-app-drawer>
     <md-app-content class="noPadding">
       <md-table
@@ -13,7 +13,6 @@
         <md-table-toolbar>
           <h1 class="md-title">Moje decky</h1>
         </md-table-toolbar>
-
         <md-table-row
           slot="md-table-row"
           slot-scope="{ item }"
@@ -30,15 +29,13 @@
               v-for="item in item.general.color_identity"
               :key="item"
             />
-            <Manasymbol v-if="item.general.color_identity.length === 0" t="C"/>
+            <Manasymbol v-if="item.general.color_identity.length === 0" t="C" />
           </md-table-cell>
-          <md-table-cell md-label="Počet karet" class="biggerFont"
-            >
-            <div>{{ item.cards.length }}/99</div>
-            </md-table-cell
-          >
+          <md-table-cell md-label="Počet karet" class="biggerFont">
+            <div>{{ item.cards ? item.cards.length : 0 }}/99</div>
+          </md-table-cell>
           <md-table-cell md-label="Kompletnost">
-             <Progresser :numb="item.cards.length" />
+            <Progresser :numb="item.cards ? item.cards.length : 0" />
           </md-table-cell>
         </md-table-row>
       </md-table>
@@ -49,11 +46,11 @@
 </template>
 <script>
 import Manasymbol from "../components/symbol";
-import Progresser from "../components/progresser"
+import Progresser from "../components/progresser";
 import QuickDeckViewer from "../components/quick-deck-viewer";
 
 export default {
-  name: "Decks",//item.cards.length
+  name: "Decks",
   components: {
     DeckCreator: () => import("../components/deck-creator"),
     Progresser,
@@ -67,7 +64,7 @@ export default {
     goToDeck(deck) {
       this.$router.push(`decks/${deck.id}`);
     }
-  }  
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -81,14 +78,14 @@ export default {
   justify-content: center;
   width: 100%;
 }
-.noPadding{
+.noPadding {
   padding: 0;
 }
-.fullHeight{
-  height:100%;
+.fullHeight {
+  height: 100%;
 }
-.centerContent{
-  display:flex;
+.centerContent {
+  display: flex;
   justify-content: center;
 }
 .biggerFont {

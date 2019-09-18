@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img :src="imageUrl" class="img" />
+    <img :src="card ? card.image_uris.normal : imageUrl" class="img" />
   </div>
 </template>
 <script>
@@ -9,19 +9,22 @@ export default {
   name: "Card",
   components: {},
   props: {
-    url: {
-      type: String,
-      default: mtgBack
+    card: {
+      type: Object,
+      default() {
+        return {
+          image_uris: {
+            small: mtgBack,
+            normal: mtgBack,
+            large: mtgBack
+          }
+        };
+      }
     }
   },
   data: () => ({
     imageUrl: mtgBack
-  }),
-  watch: {
-    url: function(val) {
-      this.imageUrl = val == null ? mtgBack : val;
-    }
-  }
+  })
 };
 </script>
 <style lang="scss" scoped>
