@@ -7,9 +7,7 @@
       <div class="md-title">{{ deck.name }}</div>
       <div class="md-subhead">{{ deck.general.name }}</div>
       <div>
-        <md-button class="md-raised md-primary" @click="deleteDeck"
-          >Smazat</md-button
-        >
+        <md-button class="md-raised" @click="deleteDeck">Smazat</md-button>
       </div>
     </div>
     <div class="md-layout-item">
@@ -19,6 +17,7 @@
 </template>
 <script>
 import Card from "./card";
+
 export default {
   name: "DetailDeckHeader",
   components: {

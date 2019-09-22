@@ -12,7 +12,7 @@
   (
     primary: md-get-palette-color(green, 400),
     // The primary color of your application
-      accent: md-get-palette-color(red, A200),
+      accent: md-get-palette-color(blue, A200),
     // The accent or secondary color
       theme: dark // This can be dark or light
   )

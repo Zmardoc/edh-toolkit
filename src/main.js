@@ -6,6 +6,7 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 import {
   MdDialog,
+  MdCard,
   MdTable,
   MdButton,
   MdField,
@@ -17,7 +18,9 @@ import {
   MdProgress,
   MdApp,
   MdDrawer,
-  MdIcon
+  MdIcon,
+  MdBottomBar,
+  MdToolbar
 } from "vue-material/dist/components";
 import "vue-material/dist/vue-material.min.css";
 //import "vue-material/dist/theme/default.css";
@@ -40,6 +43,9 @@ Vue.use(MdProgress);
 Vue.use(MdApp);
 Vue.use(MdDrawer);
 Vue.use(MdIcon);
+Vue.use(MdBottomBar);
+Vue.use(MdToolbar);
+Vue.use(MdCard);
 Vue.config.productionTip = false;
 
 new Vue({
