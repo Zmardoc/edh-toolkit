@@ -13,7 +13,7 @@
             <md-input v-model="generalName" @input="validateGeneral"></md-input>
           </md-field>
         </div>
-        <Card class="column" :card="general" />
+        <card class="column" :card="general" />
       </md-dialog-content>
       <md-dialog-actions>
         <md-button class="md-primary" @click="showDialog = false"
@@ -34,12 +34,8 @@
 </template>
 <script>
 import { uuid } from "vue-uuid";
-import Card from "../components/card";
 export default {
   name: "DeckCreator",
-  components: {
-    Card
-  },
   data: () => ({
     showDialog: false,
     name: "",

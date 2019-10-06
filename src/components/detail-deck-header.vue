@@ -1,7 +1,7 @@
 <template>
   <div class="md-layout">
     <div class="md-layout-item md-size-20 ">
-      <Card :card="deck.general" class="md-layout-item center" />
+      <card :card="deck.general" class="md-layout-item center" />
     </div>
     <div class="md-layout-item leftPad ">
       <div class="md-title">{{ deck.name }}</div>
@@ -16,13 +16,8 @@
   </div>
 </template>
 <script>
-import Card from "./card";
-
 export default {
   name: "DetailDeckHeader",
-  components: {
-    Card
-  },
   props: ["deck"],
   methods: {
     deleteDeck() {

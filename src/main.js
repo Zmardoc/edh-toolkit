@@ -4,6 +4,10 @@ import router from "./router";
 import store from "./store";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import Progresser from "./components/minies/progresser";
+import Card from "./components/minies/card";
+import Loading from "./components/minies/loading";
+import Mana from "./components/minies/mana";
 import {
   MdDialog,
   MdCard,
@@ -47,7 +51,10 @@ Vue.use(MdBottomBar);
 Vue.use(MdToolbar);
 Vue.use(MdCard);
 Vue.config.productionTip = false;
-
+Vue.component("progresser", Progresser);
+Vue.component("card", Card);
+Vue.component("loading", Loading);
+Vue.component("mana", Mana);
 new Vue({
   router,
   store,

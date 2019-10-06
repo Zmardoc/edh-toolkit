@@ -24,18 +24,18 @@
             item.general.name
           }}</md-table-cell>
           <md-table-cell md-label="Barvy">
-            <Manasymbol
+            <mana
               :t="item"
               v-for="item in item.general.color_identity"
               :key="item"
             />
-            <Manasymbol v-if="item.general.color_identity.length === 0" t="C" />
+            <mana v-if="item.general.color_identity.length === 0" t="C" />
           </md-table-cell>
           <md-table-cell md-label="Počet karet" class="biggerFont">
             <div>{{ item.cards ? item.cards.length : 0 }}/99</div>
           </md-table-cell>
           <md-table-cell md-label="Kompletnost">
-            <Progresser :numb="item.cards ? item.cards.length : 0" />
+            <progresser :numb="item.cards ? item.cards.length : 0" />
           </md-table-cell>
         </md-table-row>
       </md-table>
@@ -45,16 +45,12 @@
   </md-app>
 </template>
 <script>
-import Manasymbol from "../components/symbol";
-import Progresser from "../components/progresser";
 import QuickDeckViewer from "../components/quick-deck-viewer";
 
 export default {
   name: "Decks",
   components: {
     DeckCreator: () => import("../components/deck-creator"),
-    Progresser,
-    Manasymbol,
     QuickDeckViewer
   },
   data: () => ({

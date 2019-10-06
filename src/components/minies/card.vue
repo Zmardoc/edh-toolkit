@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import mtgBack from "../assets/back.jpg";
+import mtgBack from "../../assets/back.jpg";
 export default {
   name: "Card",
   components: {},

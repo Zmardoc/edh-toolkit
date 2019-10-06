@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-  name: "S",
+  name: "Mana",
   props: ["t"],
   data: () => ({}),
   computed: {

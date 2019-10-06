@@ -1,6 +1,6 @@
 <template>
   <div class="cardList">
-    <Card
+    <card
       v-for="card in cards"
       :key="card.tcgplayer_id"
       :card="card"
@@ -10,13 +10,9 @@
 </template>
 
 <script>
-import Card from "./card";
 export default {
   name: "CardPictureList",
-  props: ["cards"],
-  components: {
-    Card
-  }
+  props: ["cards"]
 };
 </script>
 
